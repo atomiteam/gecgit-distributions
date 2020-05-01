@@ -63,7 +63,6 @@ var storage  = {
         });
     },
     remove(post){
-        debugger;
         var _ = this;
         return new Promise(function(accept){
             var items = _.read();
