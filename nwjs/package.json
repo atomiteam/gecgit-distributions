@@ -2,20 +2,25 @@
 	"name": "gecgit-desktop",
 	"version": "0.1.0",
 	"description": "Gecgit desktop with local storage and shell plugins.",
-	"keywords": "Gecgit, desktop, plugin, local storage, shell",
+	"keywords": [
+		"Gecgit",
+		"Desktop",
+		"Plugin",
+		"Local storage",
+		"Shell"
+	],
 	"license": "(ISC OR GPL-3.0)",
 	"author": "Sami Altundag <sami.altundag@gmail.com>",
 	"main": "https://d3liylsvcmpzcl.cloudfront.net",
 	"node-remote": [
-		"https://d3liylsvcmpzcl.cloudfront.net/*",
-		"http://localhost:8080/*"
+		"https://d3liylsvcmpzcl.cloudfront.net/*"
 	],
+	"user-agent": "Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko",
 	"inject_js_start": "inject.js",
 	"scripts": {
-		"dist": "build --tasks win-x86,win-x64,linux-x86,linux-x64,mac-x64 --mirror https://dl.nwjs.io/ .",
-		"start": "run --x86 --mirror https://dl.nwjs.io/ ."
+		"start": "./node_modules/nw/nwjs/nw ."
 	},
-	"devDependencies": {
-		"nwjs-builder-phoenix": "^1.15.0"
+	"dependencies": {
+		"nw": "^0.45.4"
 	}
 }
