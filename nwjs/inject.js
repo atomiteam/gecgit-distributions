@@ -23,6 +23,8 @@ const shell = {
         }
      }
 
+
+
 // Local storage plugin
 // If enabled, authentication and cloud storage features of
 // Gecgit are disabled.
@@ -83,7 +85,7 @@ window.gecgit = {
     plugins: {
         shell: shell,
         // Uncomment below line if you want local storage
-        //storage: storage
+        // storage: storage
     }
 }
 

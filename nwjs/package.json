@@ -11,9 +11,9 @@
 	],
 	"license": "(ISC OR GPL-3.0)",
 	"author": "Sami Altundag <sami.altundag@gmail.com>",
-	"main": "https://d3liylsvcmpzcl.cloudfront.net",
+	"main": "https://www.gecgit.com",
 	"node-remote": [
-		"https://d3liylsvcmpzcl.cloudfront.net/*"
+		"https://www.gecgit.com/*"
 	],
 	"user-agent": "Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko",
 	"inject_js_start": "inject.js",
