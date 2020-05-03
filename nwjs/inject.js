@@ -3,15 +3,15 @@ const fs = nw.require('fs');
 // Default Gecgit plugins
 
 // Shell plugin allows executing notes in terminal
-var shell = {
+const shell = {
         execute: function(args) {
             this._execute(args.code.split('\n'), args.out);
         },
         _execute: function(commands, out){
-            var command = commands.shift();
-            var _ = this;
+            const command = commands.shift();
+            const _ = this;
             exec(command, (error, stdout, stderr) => {
-              out.log(command);
+              out.log(`Executing\n${command}`);
               if (error) {
                 out.error(error);
                 return;
@@ -28,7 +28,7 @@ var shell = {
 // Gecgit are disabled.
 // The user opens the application without login and notes
 // are stored in local disk.
-var storage  = {
+const storage  = {
     read(){
         try{
             return JSON.parse(fs.readFileSync('store.json'));  
@@ -39,33 +39,39 @@ var storage  = {
     write(items){
         fs.writeFileSync('store.json', JSON.stringify(items))
     },
-    list(){
-        var _ = this;
+    list(args){
+        console.log(`list ${JSON.stringify(args)}`);
+        const _ = this;
         return new Promise(function(accept){
             try{
-                accept({data: Object.values(_.read())});
+                const items = Object.values(_.read());
+                const filtered = args.q ? items.filter( i=> i.content.contains(args.q)) : items;
+                accept({data: filtered});
             }catch(e){
                 accept({data: []});
             }
         });
     },
     create(post){
-        post.id = 'id:' + new Date().getTime();
+        console.log(`create ${JSON.stringify(post)}`);
+        post.id = `id:${new Date().getTime()}`;
         return this.update(post);
     },
     update(post){
-        var _ = this;
+        console.log(`update ${JSON.stringify(post)}`);
+        const _ = this;
         return new Promise(function(accept){
-            var items = _.read();
+            const items = _.read();
             items[post.id] = post;
             _.write(items);
             accept({data: post});
         });
     },
     remove(post){
-        var _ = this;
+        console.log(`remove ${JSON.stringify(post)}`);
+        const _ = this;
         return new Promise(function(accept){
-            var items = _.read();
+            const items = _.read();
             delete items[post.id];
             _.write(items);
             accept({data: post});
@@ -75,7 +81,9 @@ var storage  = {
 
 window.gecgit = {
     plugins: {
-        shell: shell
+        shell: shell,
+        // Uncomment below line if you want local storage
+        //storage: storage
     }
 }
 
