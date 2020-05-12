@@ -87,7 +87,10 @@ class Authentication{
     get local(){
         return {};
     }
-    isAuthenticated() {
+    get id(){
+        return '';
+    }
+    get authenticated() {
         return true;
     }
     authenticate() {
@@ -103,7 +106,7 @@ window.gecgit = {
     plugins: {
         shell,
         // Uncomment below line if local storage is desired
-        //storage,
-        //authentication
+        // storage,
+        // authentication
     }
 }
