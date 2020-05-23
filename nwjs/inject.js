@@ -1,23 +1,24 @@
 const {exec} = nw.require('child_process');
 const fs = nw.require('fs');
-
+//const gui = require('nw.gui'); 
+//gui.App.clearCache();
 // Shell plugin allows executing notes in terminal
 class Shell{
     execute(args) {
-        this._execute(args.code.split('\n'), args.out);
+        this._execute(args.code.split('\n'));
     }
-    _execute(commands, out) {
+    _execute(commands) {
         const command = commands.shift();
         const _ = this;
         exec(command, (error, stdout, stderr) => {
-            out.log(`Executing\n${command}`);
+            console.log(`Executing\n${command}`);
             if (error) {
-                out.error(error);
+                console.error(error);
                 return;
             }
-            if (stdout) out.log(stdout);
-            if (stderr) out.error(stderr);
-            if (commands.length) _._execute(commands, out)
+            if (stdout) console.log(stdout);
+            if (stderr) console.error(stderr);
+            if (commands.length) _._execute(commands)
         });
     }
 }
