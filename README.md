@@ -28,7 +28,7 @@ interface.
           //   out: Console object to log back results which 
           //   has log, error, warn, info methods
           execute: function(args){
-             args.out.log(args.code);
+             console.log(args.code);
           }
       }
       
