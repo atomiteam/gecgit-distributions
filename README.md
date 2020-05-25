@@ -25,8 +25,6 @@ interface.
           // This method contains the implementation.
           // The input argument args has these attributes:	
           //   code: Note body
-          //   out: Console object to log back results which 
-          //   has log, error, warn, info methods
           execute: function(args){
              console.log(args.code);
           }
